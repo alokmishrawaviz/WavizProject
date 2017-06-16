@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	
-    
+    private int couter=3;
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,8 +34,17 @@ public class LoginServlet extends HttpServlet {
 		}
 		else
 		{
-			System.out.println("user login not......");
-		}
+						System.out.println("user login not......");
+						couter--;
+						if(couter==0){
+							CaptchaGenerationCode cg=new CaptchaGenerationCode();
+							String captcha = cg.generateCaptcha();
+							request.setAttribute("captcha", captcha);
+							RequestDispatcher dispatcher = request.getRequestDispatcher("login1.jsp");
+							dispatcher.forward(request, response);
+						}else{
+						response.sendRedirect("login1.jsp");
+		}}
 		
 		
 		}  

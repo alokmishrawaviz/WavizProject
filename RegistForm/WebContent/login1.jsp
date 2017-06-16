@@ -11,17 +11,25 @@
 <form action="LoginServlet" method="get">
 <tr>
    <td>
-E-mail  :<input type="text" placeholder="enter the valid mail" name="mail" required>
+E-mail  :<input type="text" placeholder="enter the valid mail" name="mail" >
   </td>
  </tr><br><br>
 
  <tr>
     <td>
-Password :<input type="password" placeholder="enter password" name="password" required>
+Password :<input type="password" placeholder="enter password" name="password" >
     </td>
    </tr><br>
+
    <br>
           <input type="submit" value="login">
+          
+          <% 
+         String cp= (String)request.getAttribute("captcha");
+          
+          %>
+          
+          <h2>The Captcha is:  <%=cp %></h2>
 
 </form>
 </body>
