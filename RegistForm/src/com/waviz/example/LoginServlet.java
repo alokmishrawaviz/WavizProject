@@ -1,4 +1,4 @@
-package com.waviz.d1;
+package com.waviz.example;
 
 import java.io.IOException;
 
